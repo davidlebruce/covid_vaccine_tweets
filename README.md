@@ -11,42 +11,51 @@ While vaccines and vaccinations have been a hotly debated political topic for ma
 
 ## Business Problem
 
-Using the data available from Twitter, I wanted to use NLP techniques to analyze tweet sentiment and help find insights as to how people are feeling about a COVID-19 vaccine. Sentiment analysis is a difficult task for machines to perform because there are many hurdles to overcome. Even when a text is being classified by humans as positive, negative, or neutral in sentiment, there is a significant amount of subjectivity and nuance that goes into that judgment on top of years of communicating as a human. Linguists and data scientists have made incredible progress in the realm of NLP in the last decade, and still sentiment analysis proves full of unique challenges. It is difficult to train a machine to detect sarcasm or cultural differences when speaking the same language. This should not deter us from trying, and my case I want to classify tweets about COVID-19 from the last 10 months as either positive, negative, or neutral in their sentiment, and perhaps more importantly learn what is distinct about the language of each of these classes
+Using the data available from Twitter, I wanted to use NLP techniques to analyze tweet sentiment and help find insights as to how people are feeling about a COVID-19 vaccine. Sentiment analysis is a difficult task for machines to perform because there are many hurdles to overcome. Even when a text is being classified by humans as positive, negative, or neutral in sentiment, there is a significant amount of subjectivity and nuance that goes into that judgment on top of years of communicating as a human. Linguists and data scientists have made incredible progress in the realm of NLP in the last decade, and still sentiment analysis proves full of unique challenges. It is difficult to train a machine to detect sarcasm or cultural differences when speaking the same language. This should not deter us from trying, and in my case I want to classify tweets about COVID-19 from the last 10 months as either positive, negative, or neutral in their sentiment, and perhaps more importantly learn what is distinct about the language of each of these classes.
 
 ## Data & Methods
 
 Twint, VADER, Python, SpaCy, NLTK, Scikit Learn
 
-![img](./images/)
+![img](./images/class_bar.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-
-![img](./visualizations/LA_Volume_of_Crime_Trend_boxplot.png)
+![img](./images/sentiment_over_time_line.png)
 
 
 
-## Final Model Performance
+## Modeling
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+Modeling with text based data first requires one to vectorize the words in their corpus of any significance (i.e. no unnecessary stop words). In my case I used the term frequency - interdocument frequency (tfidf) to vectorize my corpus. Once vectorized and split into train and test data, I set the target to be the sentiment category (positive, negative, neutral). This meant I was aiming to perform a *multiclass* classification. 
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+I chose to evaluate my models on their F1 scores as this strikes a good balance between precision and recall, and a model cannot produce a good F1 score without being strong in both. From my perspective there were no significant risks in overcompensating for misclassifying tweets as either positive, negative, or neutral, so evaluating on the F1 accounted for all angles.
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+I chose to begin my modeling process with a simple multinomial naive bayes because there are very few hyperparameters to tune and it known to work exceptionally well with text classification. I progressively increased the complexity of my vanilla models moving from naive bayes to support vector machine (SVM) to RandomForest. 
+
+![img](./images/svm_matrix.png) ![img](./images/nb_matrix.png) ![img](./images/rf_matrix.png)
+
 
 ## Recommendations
 
+What I learned from analyzing the the sentiments of tweets regarding the COVID-19 vaccine
 
 ## Next Steps
--
--
--
+
+**With more time I would like to:**
+- Incorporate more tweets from more consistent dates and specified by location and do an analysis across different locales
+- Continue to add incoming tweets from more recent dates especially since the vaccine was first administered to the public right after my webscraping
+- Perform Latent Dirichlet Allocation (LDA) topic modeling to gain further insight into the data
+- Develop and write a more specialized, custom tailored text preprocessing function, vast improvements can be made in this area
+- Dive deeper into hyperparameter tuning with each of the models, there is bound to be improvements
+- Explore NLP and sentiment analysis on tweets in languages other than English
 
 
 ## Repository Contents
 - `data`: Folder contains data used in notebooks, mostly hidden in .gitignore due to file sizes
-- `src`: Folder contains .py files
-- `images`: Folder contains graphs from EDA & modeling process
+- `images`: Folder contains graphs from EDA & modeling process and other graphics
+- `src`: Folder contains .py file
 - `.gitignore`: Contains hidden files including the original dataset
+- `01_web_scraping.ipynb`: Jupyter notebook where tweets are scraped 
+- `02_cleaning.ipynb`: Jupyter notebook used for data cleaning
+- `03_EDA.ipynb`: Jupyter notebook for exploratory data analysis
+- `04_modeling.ipynb`: Jupyter notebook for modeling and results
 - `presentation.pdf`: Image of slide deck
