@@ -43,10 +43,6 @@ Key takeaways from the lineplot:
 
 3) There is a general upward trend of more and more tweets about the COVID-19 vaccine as it gets closer and closer to being approved by the FDA for the public in early December
 
-Looking at the frequency distribution of the top 30 words across the corpus, one can get a sense of what the search terms may have been. There is a clear picture here of the pandemic of 2020 and the covid vaccine in question.
-
-![img](./images/third_fdist.png)
-
 Below we get a better idea of what distinguishes the positive class from the negative class. The positive tweets showing more openness to trials, and readiness and words like 'effective' and 'ready' wherein the negative tweets there is more of a sense of doom and words like 'flu,' 'test,' and 'rate.'
 
 ![img](./images/highly_pos_cloud.png)
