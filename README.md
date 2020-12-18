@@ -20,9 +20,11 @@ Using Twint, I scraped about 80,000 tweets from Twitter ranging from the end of 
 With any form of unstructured text data, there exists an abundance of information to extrapolate. In this case, working with tweets about the Covid vaccine, the concepts I wanted explore are 1) what the breakdown of sentiment over time has been this year, 2) what sorts of words are common in each of the three classes (positive, negative, neutral) and how they resemble one another or more likely differ, and 3) ideally extract the distict features from each to help address the lack of trust in the vaccines that are now FDA approved.
 
 Without having the time or the resources to manually tag all of the tweets I scraped, I began this process by using Valence Aware Dictionary and sEntiment Reasoner (VADER) to establish a baseline measure for classification and led to valuable insights. Using VADER allowed me to establish a basis for my classification without having to manually tag each of my tweets. The package was built and trained using social media-like text for sentiment analysis and is **particularly adept** at picking up on common social media trends like:
+
     - emoticons (*happy*: ':)', *sad*: ':(', *angry*: '>:\\[')
     - acronyms ('LOL' and 'WTF')
     - slang
+    
 **It is important to note that while VADER does a good job of picking up on the overall sentiment of a tweet by giving each tweet and giving it a percent positive, percent negative, percent neutral, and overall compound score, the machine cannot actually understand the language (in this case English).** There are a number of instances I noticed where the overall sentiment of a tweet clearly conveying negative sentiment, but the object of that negative sentiment was something other than the COVID-19 vaccine. So, while VADER may have correctly tagged a tweet as negative in its tone, it could and should probably be tagged as a tweet with positive sentiment towards a vaccine. With more time I would ideally like to have a crowd-sourced voting system to classify tweets as ground truth for our classification.
 
 The barchart below reveals a little bit of a class imbalance. My data is broken up into about 40% positive tweets, 35% negative tweets, and 25% neutral tweets. This is nothing to worry about. It's not so dramatic of a difference that my classifier would be able to successfully guess the majority class most of the time (that would prove especially difficult with a multiclass classification problem such as this).
@@ -40,6 +42,15 @@ Key takeaways from the lineplot:
 2) The end of June and the beginning of September are the only points at which we see the amount of negative tweets exceeding the amount of positive tweets, otherwise the lines don't seem to cross each other and follow the same general trends
 
 3) There is a general upward trend of more and more tweets about the COVID-19 vaccine as it gets closer and closer to being approved by the FDA for the public in early December
+
+Looking at the frequency distribution of the top 30 words across the corpus, one can get a sense of what the search terms may have been. There is a clear picture here of the pandemic of 2020 and the covid vaccine in question.
+
+![img](./images/third_fdist.png)
+
+Below we get a better idea of what distinguishes the positive class from the negative class. The positive tweets showing more openness to trials, and readiness and words like 'effective' and 'ready' wherein the negative tweets there is more of a sense of doom and words like 'flu,' 'test,' and 'rate.'
+
+![img](./images/highly_pos_cloud.png)
+![img](./images/highly_neg_cloud.png)
 
 ## Modeling
 
@@ -65,7 +76,9 @@ After evaluating each of these models, the choice was clear, SVM won the day, an
 
 Based on the results of my analysis, I would recommend gathering even more data and passing new tweets through my SVM classifier to keep gaining deeper insights into what is preventing individuals from trusting an FDA approved vaccine for the Coronavirus.
 
-The insights I gained from the exploratory data analysis phase lead me to believe that people who posted negative tweets about the covid vaccine are more likely to...
+The insights I gained from the exploratory data analysis phase lead me to believe that people who posted positive tweets about the covid vaccine are more likely to consider themselves ready for a vaccine regardless of how quickly it was put into production. 
+
+My recommendation based on the data in response to negative tweets would be for medical professionals to keep campaigning for the readiness and efficacy of the clinically trialed vaccines now being used for the public. There should be an emphasis on why Covid is different from the flu, and how deadly the flu is even with a vaccine regardless. Herd immunity will most quickly and safely be achieved through trust and participation in a vaccine. More tweets will help provide more insight and clarity as to how to address specific mistrust of the vaccines.
 
 ## Next Steps
 
