@@ -61,12 +61,12 @@ The insights I gained from the exploratory data analysis phase lead me to believ
 
 
 ## Repository Contents
-- `data`: Folder contains data used in notebooks, mostly hidden in .gitignore due to file sizes
-- `images`: Folder contains graphs from EDA & modeling process and other graphics
-- `src`: Folder contains .py file
-- `.gitignore`: Contains hidden files including the original dataset
-- `01_web_scraping.ipynb`: Jupyter notebook where tweets are scraped 
-- `02_cleaning.ipynb`: Jupyter notebook used for data cleaning
-- `03_EDA.ipynb`: Jupyter notebook for exploratory data analysis
-- `04_modeling.ipynb`: Jupyter notebook for modeling and results
-- `presentation.pdf`: Image of slide deck
+-`data`: Folder contains data used in notebooks, mostly hidden in .gitignore due to file sizes
+-`images`: Folder contains graphs from EDA & modeling process and other graphics
+-`src`: Folder contains .py file
+-`.gitignore`: Contains hidden files including the original dataset
+-`01_web_scraping.ipynb`: Jupyter notebook where tweets are scraped 
+-`02_cleaning.ipynb`: Jupyter notebook used for data cleaning
+-`03_EDA.ipynb`: Jupyter notebook for exploratory data analysis
+-`04_modeling.ipynb`: Jupyter notebook for modeling and results
+-`presentation.pdf`: Image of slide deck
