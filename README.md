@@ -31,22 +31,33 @@ I chose to evaluate my models on their F1 scores as this strikes a good balance 
 
 I chose to begin my modeling process with a simple multinomial naive bayes because there are very few hyperparameters to tune and it known to work exceptionally well with text classification. I progressively increased the complexity of my vanilla models moving from naive bayes to support vector machine (SVM) to RandomForest. 
 
-![img](./images/svm_matrix.png) ![img](./images/nb_matrix.png) ![img](./images/rf_matrix.png)
+![img](./images/nb_matrix.png) 
 
+Compared to the naive bayes classifier above, the SVM does a much better job at classifying the neutral class. This is the kind of coloring we like to see in a confusion matrix with a solid dark line through the diagonal indicating that the model predicted a tweet's true class accurately. 
+
+![img](./images/svm_matrix.png) 
+
+And finally I tried using an ensemble method with my RandomForest classifier, which did not produce good results. We can see from the confusion matrix below the dark blue heaviness over the predicted positive class, this means the classifier was disposed to choosing the positive class (the most prevalent class in the dataset).
+
+![img](./images/rf_matrix.png)
+
+After evaluating each of these models, the choice was clear, SVM won the day, and in the end I would like to come back and improve upon this model.
 
 ## Recommendations
 
-What I learned from analyzing the the sentiments of tweets regarding the COVID-19 vaccine
+Based on the results of my analysis, I would recommend gathering even more data and passing new tweets through my SVM classifier to keep gaining deeper insights into what is preventing individuals from trusting an FDA approved vaccine for the Coronavirus.
+
+The insights I gained from the exploratory data analysis phase lead me to believe that people who posted negative tweets about the covid vaccine are more likely to...
 
 ## Next Steps
 
 **With more time I would like to:**
-- Incorporate more tweets from more consistent dates and specified by location and do an analysis across different locales
-- Continue to add incoming tweets from more recent dates especially since the vaccine was first administered to the public right after my webscraping
-- Perform Latent Dirichlet Allocation (LDA) topic modeling to gain further insight into the data
-- Develop and write a more specialized, custom tailored text preprocessing function, vast improvements can be made in this area
-- Dive deeper into hyperparameter tuning with each of the models, there is bound to be improvements
-- Explore NLP and sentiment analysis on tweets in languages other than English
+1) Incorporate more tweets from more consistent dates and specified by location and do an analysis across different locales
+2) Continue to add incoming tweets from more recent dates especially since the vaccine was first administered to the public right after my webscraping
+3) Perform Latent Dirichlet Allocation (LDA) topic modeling to gain further insight into the data
+4) Develop and write a more specialized, custom tailored text preprocessing function, vast improvements can be made in this area
+5) Dive deeper into hyperparameter tuning with each of the models, there is bound to be improvements
+6) Explore NLP and sentiment analysis on tweets in languages other than English
 
 
 ## Repository Contents
