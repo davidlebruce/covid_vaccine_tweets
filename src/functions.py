@@ -1,3 +1,4 @@
+# twint scraping packages
 import pandas as pd
 import twint
 import nest_asyncio
@@ -5,7 +6,23 @@ nest_asyncio.apply()
 import datetime
 from dateutil.relativedelta import relativedelta
 
-# scraping function
+# NLP packages
+import spacy, re
+from spacy.lang.en import English
+import nltk
+from nltk import word_tokenize, FreqDist
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import TweetTokenizer
+nltk.download('wordnet')
+nltk.download('stopwords')
+
+
+#######################################################################
+### scraping functions adapted from Josh Szymanowski & Eric Blander ###
+#######################################################################
+
+
 def twint_scrape(
     search,
     since=None,
@@ -60,7 +77,11 @@ def search_loop(
         
     return df
 
-#######################################################################################
+
+################################################
+### Scraping functions for geolocated tweets ###
+################################################
+
 
 # scraper with geolocation
 def twint_loc_scrape(
@@ -120,3 +141,28 @@ def search_loc_loop(
         print(f'{since} saved!')
         
     return df
+
+
+###########################################################
+### Text Preprocessing Function Adapted from Zijing Zhu ###
+###########################################################
+
+
+def tweet_preprocessing(str_input):
+    # instantiate spacy English object
+    nlp = English()
+    
+    # tokenization, remove punctuation, lemmatization
+    words=[token.lemma_ for token in nlp(str_input) if not token.is_punct]
+ 
+    # remove symbols, websites, email addresses 
+    words = [re.sub(r'[^A-Za-z@]', '', word) for word in words] 
+    words = [re.sub(r'\S+com', '', word) for word in words]
+    words = [re.sub(r'\S+@\S+', '', word) for word in words] 
+    words = [word for word in words if word!=' ']
+    words = [word for word in words if len(word)!=0] 
+ 
+    # combine a list into one string   
+    string = ' '.join(words)
+    
+    return string
