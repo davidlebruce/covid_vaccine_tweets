@@ -15,7 +15,15 @@ Using the data available from Twitter, I wanted to use NLP techniques to analyze
 
 ## Data & Methods
 
-Twint, VADER, Python, SpaCy, NLTK, Scikit Learn
+Using Twint, I scraped about 80,000 tweets from Twitter ranging from the end of February 2020 to the middle of December 2020. After data cleaning with Pandas, I was left with around 77,000 unique, English tweets in the same timeframe. I used a variety of NLP packages (NLTK, SpaCy, VaderSentiment) to perform my exploratory data analysis and produce visualizations. 
+
+With any form of unstructured text data, there exists an abundance of information to extrapolate. In this case, working with tweets about the Covid vaccine, the concepts I wanted explore are 1) what the breakdown of sentiment over time has been this year, 2) what sorts of words are common in each of the three classes (positive, negative, neutral) and how they resemble one another or more likely differ, and 3) ideally extract the distict features from each to help address the lack of trust in the vaccines that are now FDA approved.
+
+Without having the time or the resources to manually tag all of the tweets I scraped, I began this process by using Valence Aware Dictionary and sEntiment Reasoner (VADER) to establish a baseline measure for classification and led to valuable insights. Using VADER allowed me to establish a basis for my classification without having to manually tag each of my tweets. The package was built and trained using social media-like text for sentiment analysis and is **particularly adept** at picking up on common social media trends like:
+    - emoticons (*happy*: ':)', *sad*: ':(', *angry*: '>:\\[')
+    - acronyms ('LOL' and 'WTF')
+    - slang
+**It is important to note that while VADER does a good job of picking up on the overall sentiment of a tweet by giving each tweet and giving it a percent positive, percent negative, percent neutral, and overall compound score, the machine cannot actually understand the language (in this case English).** There are a number of instances I noticed where the overall sentiment of a tweet clearly conveying negative sentiment, but the object of that negative sentiment was something other than the COVID-19 vaccine. So, while VADER may have correctly tagged a tweet as negative in its tone, it could and should probably be tagged as a tweet with positive sentiment towards a vaccine. With more time I would ideally like to have a crowd-sourced voting system to classify tweets as ground truth for our classification.
 
 The barchart below reveals a little bit of a class imbalance. My data is broken up into about 40% positive tweets, 35% negative tweets, and 25% neutral tweets. This is nothing to worry about. It's not so dramatic of a difference that my classifier would be able to successfully guess the majority class most of the time (that would prove especially difficult with a multiclass classification problem such as this).
 
