@@ -17,11 +17,21 @@ Using the data available from Twitter, I wanted to use NLP techniques to analyze
 
 Twint, VADER, Python, SpaCy, NLTK, Scikit Learn
 
+The barchart below reveals a little bit of a class imbalance. My data is broken up into about 40% positive tweets, 35% negative tweets, and 25% neutral tweets. This is nothing to worry about. It's not so dramatic of a difference that my classifier would be able to successfully guess the majority class most of the time (that would prove especially difficult with a multiclass classification problem such as this).
+
 ![img](./images/class_bar.png)
+
+One of my goals when I set out to analyze the sentiment of these tweets was to evaluate them over the course of the year. There are strange gaps in the data shown by the broad jumps in the lines, indicating a problem with the twitter scraping process.
 
 ![img](./images/sentiment_over_time_line.png)
 
+Key takeaways from the lineplot: 
 
+1) There is almost no tweeting about any vaccine until the end of March when COVID-19 really began to overwhelm the U.S.
+
+2) The end of June and the beginning of September are the only points at which we see the amount of negative tweets exceeding the amount of positive tweets, otherwise the lines don't seem to cross each other and follow the same general trends
+
+3) There is a general upward trend of more and more tweets about the COVID-19 vaccine as it gets closer and closer to being approved by the FDA for the public in early December
 
 ## Modeling
 
@@ -61,12 +71,12 @@ The insights I gained from the exploratory data analysis phase lead me to believ
 
 
 ## Repository Contents
--`data`: Folder contains data used in notebooks, mostly hidden in .gitignore due to file sizes
--`images`: Folder contains graphs from EDA & modeling process and other graphics
--`src`: Folder contains .py file
--`.gitignore`: Contains hidden files including the original dataset
--`01_web_scraping.ipynb`: Jupyter notebook where tweets are scraped 
--`02_cleaning.ipynb`: Jupyter notebook used for data cleaning
--`03_EDA.ipynb`: Jupyter notebook for exploratory data analysis
--`04_modeling.ipynb`: Jupyter notebook for modeling and results
--`presentation.pdf`: Image of slide deck
+- `data`: Folder contains data used in notebooks, mostly hidden in .gitignore due to file sizes
+- `images`: Folder contains graphs from EDA & modeling process and other graphics
+- `src`: Folder contains .py file
+- `.gitignore`: Contains hidden files including the original dataset
+- `01_web_scraping.ipynb`: Jupyter notebook where tweets are scraped 
+- `02_cleaning.ipynb`: Jupyter notebook used for data cleaning
+- `03_EDA.ipynb`: Jupyter notebook for exploratory data analysis
+- `04_modeling.ipynb`: Jupyter notebook for modeling and results
+- `presentation.pdf`: Image of slide deck
