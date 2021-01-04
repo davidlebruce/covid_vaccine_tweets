@@ -147,20 +147,25 @@ def search_loc_loop(
 ### Text Preprocessing Function Adapted from Zijing Zhu ###
 ###########################################################
 
+stop_words = list(set(stopwords.words('english')))
+stop_words.extend(['covid', '#covid', 'virus', '#virus',
+                   'coronavirus', '#coronavirus', 'vaccine',
+                   '#vaccine', 'vaccines', '#vaccines', 'covid-19'
+                   'covidvaccine'])
+stop_words = [w.lower() for w in stop_words]
 
 def tweet_preprocessing(str_input):
-    # instantiate spacy English object
-    nlp = English()
     
-    # tokenization, remove punctuation, lemmatization
-    words=[token.lemma_ for token in nlp(str_input) if not token.is_punct]
- 
-    # remove symbols, websites, email addresses 
+    # remove symbols, websites, email addresses
+    words = str_input 
     words = [re.sub(r'[^A-Za-z@]', '', word) for word in words] 
     words = [re.sub(r'\S+com', '', word) for word in words]
     words = [re.sub(r'\S+@\S+', '', word) for word in words] 
     words = [word for word in words if word!=' ']
     words = [word for word in words if len(word)!=0] 
+    
+    # remove stopwords     
+    words = [word.lower() for word in words if (word.lower() not in stop_words) & (len(word.lower()) > 1)]
  
     # combine a list into one string   
     string = ' '.join(words)
