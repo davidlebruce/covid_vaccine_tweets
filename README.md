@@ -47,7 +47,7 @@ Key takeaways from the lineplot:
 
 3) There is a general upward trend of more and more tweets about the COVID-19 vaccine as it gets closer and closer to being approved by the FDA for the public in early December
 
-Below we get a better idea of what distinguishes the positive class from the negative class. The positive tweets showing more openness to trials, and readiness and words like 'effective' and 'ready' wherein the negative tweets there is more of a sense of doom and words like 'flu,' 'test,' and 'rate.'
+Below we get a better idea of what distinguishes the positive class from the negative class, though there remains a good amount of ambiguity. The positive tweets showing more openness to trials, and readiness and words like 'effective' and 'ready' wherein the negative tweets there is more of a sense of doom and words like 'flu,' 'test,' and 'rate.'
 
 ![img](./images/highly_pos_cloud.png)
 ![img](./images/highly_neg_cloud.png)
@@ -68,11 +68,11 @@ The SVM classifier started out strong and is ultimately the model I used after f
 
 ![img](./images/gs_matrix.png)
 
-After evaluating several vanilla models, I made marginal improvements to the SVM classifier by increasing the C value as the results came back from cross validating with grid search. This wound up as my final model, an **overall good classifier with an F1 of 0.83.**
+After evaluating several vanilla models, I made marginal improvements to the SVM classifier by increasing the C value as the results came back from cross validating with grid search. This wound up as my final model, an **overall good classifier with an F1 of 0.85.**
 
 ## Recommendations
 
-Based on the results of my analysis, I would recommend gathering even more data and passing new tweets through my SVM classifier to keep gaining deeper insights into what is preventing individuals from trusting an FDA approved vaccine for the Coronavirus.
+Based on the results of my analysis, I would recommend gathering even more data and passing new tweets through my SVM classifier to keep gaining deeper insights into what is preventing individuals from trusting an FDA approved vaccine for the Coronavirus. Sentiment analysis is a difficult task for machines to perform because there are many hurdles to overcome. Even when a text is being classified by humans as positive, negative, or neutral in sentiment, there is a significant amount of subjectivity and nuance that goes into that judgment on top of years of communicating as a human.
 
 The insights I gained from the exploratory data analysis phase lead me to believe that people who posted positive tweets about the covid vaccine are more likely to consider themselves ready for a vaccine regardless of how quickly it was put into production. 
 
