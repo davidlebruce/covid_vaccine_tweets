@@ -60,15 +60,15 @@ I began my modeling process with a simple multinomial Naive Bayes because there 
 
 ![img](./images/rf_matrix.png) 
 
-Compared to the naive bayes classifier above, the SVM does a much better job at classifying the neutral class. This is the kind of coloring we like to see in a confusion matrix with a solid dark line through the diagonal indicating that the model predicted a tweet's true class accurately. 
+The confusion matrix above is from my worst performing model. The RandomForest classifier overpredicted the dominant class almost all of the time. This does not work even remotely well for a multiclass classification problem with as even of a spread as I had amongst my data. When I balanced the weight of the classes, the RandomForest improved, but remained the worst performer overall. 
 
 ![img](./images/svm_matrix.png) 
 
-And finally I tried using an ensemble method with my RandomForest classifier, which did not produce good results. We can see from the confusion matrix below the dark blue heaviness over the predicted positive class, this means the classifier was disposed to choosing the positive class (the most prevalent class in the dataset).
+The SVM classifier started out strong and is ultimately the model I used after further tuning with grid search cross validation.
 
 ![img](./images/gs_matrix.png)
 
-After evaluating each of these models, the choice was clear, SVM won the day, and in the end I would like to come back and improve upon this model.
+After evaluating several vanilla models, I made marginal improvements to the SVM classifier by increasing the C value as the results came back from cross validating with grid search. This wound up as my final model, an **overall good classifier with an F1 of 0.83.**
 
 ## Recommendations
 
