@@ -33,7 +33,7 @@ Without having the time or the resources to manually tag all of the tweets I scr
 
 The barchart below reveals a little bit of a class imbalance. My data is broken up into about 40% positive tweets, 35% negative tweets, and 25% neutral tweets. This is nothing to worry about. It's not so dramatic of a difference that my classifier would be able to successfully guess the majority class most of the time (that would prove especially difficult with a multiclass classification problem such as this).
 
-![img](./images/class_bar.png)
+![img](./images/vader_sent_dist.png)
 
 One of my goals when I set out to analyze the sentiment of these tweets was to evaluate them over the course of the year. There are strange gaps in the data shown by the broad jumps in the lines, indicating a problem with the twitter scraping process.
 
