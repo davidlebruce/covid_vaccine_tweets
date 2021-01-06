@@ -64,7 +64,7 @@ The confusion matrix above is from my worst performing model. The RandomForest c
 
 ![img](./images/svm_matrix.png) 
 
-The SVM classifier started out strong and is ultimately the model I used after further tuning with grid search cross validation.
+I also tested with a stochastic gradient descent (SGD) model which had a better fit than the SVM. The baseline SVM classifier started out strong and is ultimately the model I used after further tuning with grid search cross validation.
 
 ![img](./images/gs_matrix.png)
 
