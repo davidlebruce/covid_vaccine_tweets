@@ -98,4 +98,4 @@ My recommendation based on the data in response to negative tweets would be for 
 - `02_cleaning.ipynb`: Jupyter notebook used for data cleaning
 - `03_EDA.ipynb`: Jupyter notebook for exploratory data analysis
 - `04_modeling.ipynb`: Jupyter notebook for modeling and results
-- `presentation.pdf`: Image of slide deck
+- `slide_deck.pdf`: Image of slide deck
