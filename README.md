@@ -31,7 +31,7 @@ Without having the time or the resources to manually tag all of the tweets I scr
     
 **It is important to note that while VADER does a good job of picking up on the overall sentiment of a tweet by giving each tweet a percent positive, percent negative, percent neutral, and overall compound score, the machine cannot actually understand the language (in this case English).** While VADER may have correctly tagged a tweet as negative in its tone, there were cases where the tweet should probably have been tagged as a tweet with positive sentiment towards a vaccine.
 
-The barchart below reveals a little bit of a class imbalance. My data is broken up into about 40% positive tweets, 35% negative tweets, and 25% neutral tweets. This is nothing to worry about. It's not so dramatic of a difference that my classifier would be able to successfully guess the majority class most of the time (that would prove especially difficult with a multiclass classification problem such as this).
+What looks like a relatively normal distribution below is my breakdown of VADER categorized sentiment. The slightly larger tail on the right are the tweets in the positive class making up about 40% of the dataset, the tail on the left composed of negative tweets is about 35% of the overall dataset, and the narrow, very tall portion in the middle are the remaining 25% of neutral tweets. This is a slight class imbalance, but not so dramatic of a difference that my classifier would be able to successfully guess the majority class most of the time (that would prove especially difficult with a multiclass classification problem such as this).
 
 ![img](./images/vader_sent_dist.png)
 
