@@ -82,7 +82,7 @@ My recommendation based on the data in response to negative tweets would be for 
 
 **With more time I would like to:**
 1) Incorporate more tweets from more consistent dates and specified by location and do an analysis across different locales
-2) Continue to add incoming tweets from more recent dates especially since the vaccine was first administered to the public right after my webscraping
+2) Continue to add incoming tweets from more recent dates (and hopefully through to the complete rollout of the vaccine in the United States) especially since the vaccine was first administered to the public right after my webscraping
 3) Perform Latent Dirichlet Allocation (LDA) topic modeling to gain further insight into the data
 4) Develop and write a more specialized, custom tailored text preprocessing function, vast improvements can be made in this area
 5) Crowdsource a voting class system to establish ground truth sentiment for tweets
